@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+//importamos el array sistemaSolar
+import sistemaSolar from "./sistemaSolar";
+//importamos el componente Planeta
+import Planeta from "./planeta";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  //Creamos la constante sistema y la igualamos a lo que devuelve la funcion .map()
+  //Por parametros a la funcion .map le pasamos un parámetro que será la puerta de acceso a cada elemento del array sistemaSolar
+  const sistema = sistemaSolar.map((planeta) => {
+    //devolvemos El componente planeta con sus atributos
+    return (
+      <Planeta
+        nombre={planeta.nombre}
+        color={planeta.color}
+        temperatura={planeta.temperatura}
+        imagen={planeta.imagen}
+      />
+    );
+  });
+
+  //La función App devuelve la constnate sistema, que tiene el valor que devuelven los diferentes componentenes Planeta
+  return sistema;
 }
 
 export default App;
