@@ -1,16 +1,25 @@
-//Creamos la función Planeta que recibe por parametros los props (props es un objeto que contiene los atributos que le hemos dado a Planeta en la función App)
+import { useState } from "react";
 
 const Planeta = (props) => {
-  //La función Planeta devuelve el código JSX con el valor del objeto props como contenido
+  const [planeta, setPlaneta] = useState(props);
+
+  const borrarPlaneta = () => {
+    setPlaneta("");
+  };
+
+  const mostrarPlaneta = () => {
+    setPlaneta(props);
+  };
   return (
     <div>
-      <h1>{props.nombre}</h1>
-      <p>{props.color}</p>
-      <p>{props.temperatura}</p>
-      <img src={props.imagen} alt="" />
+      <h1>{planeta.nombre}</h1>
+      <p>{planeta.temperatura}</p>
+      <p>{planeta.color}</p>
+      <img src={planeta.imagen} alt="" />
+      <button onClick={borrarPlaneta}>Borrar</button>
+      <button onClick={mostrarPlaneta}>mostrar</button>
     </div>
   );
 };
 
-//Exportamos la función Planeta
 export default Planeta;
